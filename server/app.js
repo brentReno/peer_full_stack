@@ -27,3 +27,9 @@ app.get('/', function (req, res) {
   console.log('base url hit');
   res.sendFile(path.resolve('public/views/index.html'));
 }); // end base url
+
+//get items from shelf
+app.get('/shelf', function(req,res){
+  console.log(' hit the shelf get route');
+  res.sendStatus(200);
+});//end shelf get
