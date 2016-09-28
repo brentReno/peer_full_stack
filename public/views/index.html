@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,9 +16,15 @@
     <!-- Custom CSS -->
     <link href="css/logo-nav.css" rel="stylesheet">
 
+      <script src="/vendors/angular.min.js" charset="utf-8"></script>
+      <script src="/vendors/angular-route.min.js" charset="utf-8"></script>
+      <script src="/scripts/client.js" charset="utf-8"></script>
+      <script src="/scripts/controllers/homeCtrl.js" charset="utf-8"></script>
+      <script src="/scripts/controllers/addObjectCtrl.js" charset="utf-8"></script>
+      <script src="/scripts/controllers/viewShelfCtrl.js" charset="utf-8"></script>
 </head>
 
-<body>
+<body ng-app="myApp">
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -43,6 +48,7 @@
                     <li ng-if="!isAuthenticated"><a href="#/login">Log In</a></li>
                     <li ng-if="isAuthenticated"><a href="#/add">Add Shelf Object</a></li>
                     <li ng-if="isAuthenticated"><a href="#/" ng-click="authService.logout()">Log Out</a></li>
+                    <li><a href="#view">View Shelf</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -54,8 +60,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Logo Nav by Start Bootstrap</h1>
-                <p>Note: You may need to adjust some CSS based on the size of your logo. The default logo size is 150x50 pixels.</p>
+              <main ng-view></main>
             </div>
         </div>
     </div>
