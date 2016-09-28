@@ -27,3 +27,8 @@ app.get('/', function (req, res) {
   console.log('base url hit');
   res.sendFile(path.resolve('public/views/index.html'));
 }); // end base url
+
+// post route add a new shelf object
+app.post('/shelf', function(req, res) {
+  console.log('post route hit');
+}); // end post route
