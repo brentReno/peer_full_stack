@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var shelfSchema = new Schema({
   description: {type: String, required: true},
   placer: {type: String, required: true},
-  image: {type: String, default: 'http://tinyurl.com/hj5mqd5'}
+  image: {type: String, default: 'styles/images/books.jpg'}
 });
 
 var ShelfModel = mongoose.model('shelfobjects', shelfSchema);
