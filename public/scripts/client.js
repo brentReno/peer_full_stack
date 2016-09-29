@@ -21,7 +21,7 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
       emptyLocalStorage();
       $scope.showUser = false;
     }
-  }; // end init function
+  };// end init function
 
   $scope.logIn = function(){
     console.log('in logIn');
