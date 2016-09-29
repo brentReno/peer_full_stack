@@ -90,7 +90,7 @@ myApp.controller('addController', ['$scope', '$http', function($scope, $http) {
     }).then(function(response){
       console.log('post response =', response);
     }, function errorCallBack(response){
-      console.log('error in POST')
+      console.log('error in POST');
     });
   };
 
