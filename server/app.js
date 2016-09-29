@@ -21,9 +21,43 @@ var MongoDB = mongoose.connect(mongoURI).connection;
 app.listen(port, function() {
   console.log('server spinning on', port);
 }); // end app.listen
-
+// Item model
+var Shelf = require('../models/ShelfModel.js');
 // base url
 app.get('/', function (req, res) {
   console.log('base url hit');
   res.sendFile(path.resolve('public/views/index.html'));
 }); // end base url
+
+app.post('/addItem', function(req, res){
+	console.log('in items post');
+	console.log('req.body is', req.body);
+	var item = req.body;
+	var newItem = new Item({
+		description: item.description,
+		placer: item.placer,
+		image: item.image
+	});//
+	newItem.save(function(err){
+		if(err){
+			console.log('err saving item', err);
+			res.sendStatus(500);
+		} else {
+			console.log('item saved successfully');
+			res.sendStatus(201);
+		}
+	}); //end newItem save
+});//end app post
+
+app.get('/', function(req, res){
+	console.log('in item get');
+	Shelf.find({}, function(err, foundItems){
+		if(err){
+			console.log('error getting item');
+			res.sendStatus(500);
+		} else{
+			console.log('succeeded in getting items');
+			res.send(foundItems);
+		}
+	}); //end Item find
+});//end get
