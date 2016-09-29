@@ -51,7 +51,24 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
       }
     });
   }; // end logout
+  var getItems = $scope.getItems = function(){
+    $http({
+      method: 'GET',
+      url: '/getItem'
+    }).then(function(response){
+      console.log('response is', response);
+      $scope.shelfobjects=response.data;
+
+      console.log('got objects from the shelf', response);
+    }, function errorCallBack(response){
+      console.log('error in GET');
+    });
+
+  };
+
+
   $scope.init();
+  $scope.getItems();
 
 }]); // end auth controller
 
