@@ -57,6 +57,7 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
 
 myApp.controller('addController', ['$scope', '$http', function($scope, $http) {
   console.log('in addController');
+
   $scope.addItems = function(){
     var dataToSend = {
       description: $scope.description,
@@ -78,15 +79,20 @@ myApp.controller('addController', ['$scope', '$http', function($scope, $http) {
 
   var getItems = $scope.getItems = function(){
     $http({
-      method: '/GET',
+      method: 'GET',
       url: '/getItem'
     }).then(function(response){
+      console.log('response is', response);
       $scope.shelfobjects=response.data;
+
       console.log('got objects from the shelf', response);
     }, function errorCallBack(response){
       console.log('error in GET');
     });
+
   };
+
+  getItems();
 
 
 
