@@ -5,6 +5,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 var mongoose = require('mongoose');
+var Shelf = require('../models/ShelfModel');
 
 // declare port
 var port = process.env.PORT || 3030;
@@ -31,5 +32,14 @@ app.get('/', function (req, res) {
 //get items from shelf
 app.get('/shelf', function(req,res){
   console.log(' hit the shelf get route');
-  res.sendStatus(200);
+  Shelf.find(function(err, shelfResults){
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    }
+    else{
+    console.log("Shelf Results:",shelfResults);
+    res.send(shelfResults);
+    }
+  });//end find
 });//end shelf get
