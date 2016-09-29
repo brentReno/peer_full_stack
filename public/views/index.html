@@ -32,8 +32,8 @@
         </form>
       </div>
         <div ng-repeat="item in shelfobjects">
-         {{item.description}} <br>
-         {{item.placer}}<br>
+         Item: {{item.description}} <br>
+         Placed by: {{item.placer}}<br>
          {{item.image}}<br>
          <button ng-click="deleteItem()" ng-show='showUser'>Remove Item</button>
          <br>
