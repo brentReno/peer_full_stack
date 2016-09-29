@@ -1,2 +1,7 @@
 <div ng-init="viewShelf()">
+  <div ng-repeat="obj in shelfObjects">
+    <img ng-src={{obj.image}}>
+    <p>{{obj.description}}</p>
+    <p> Placed by: {{obj.placer}}
+  </div>
 </div>

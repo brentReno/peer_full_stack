@@ -6,6 +6,8 @@ myApp.controller("viewShelfCtrl", ['$scope', '$http', function($scope,$http){
       url:'/shelf'
     }).then(function(response){
       console.log("back from server with:", response.data);
+      $scope.shelfObjects = response.data;
+      console.log("$scope shelfObjects:",$scope.shelfObjects);
     });//end http and then
   };//end view shelf
 }]);
