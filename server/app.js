@@ -33,7 +33,7 @@ app.post('/addItem', function(req, res){
 	console.log('in items post');
 	console.log('req.body is', req.body);
 	var item = req.body;
-	var newItem = new Item({
+	var newItem = new Shelf({
 		description: item.description,
 		placer: item.placer,
 		image: item.image

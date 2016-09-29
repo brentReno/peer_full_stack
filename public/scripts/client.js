@@ -67,7 +67,7 @@ myApp.controller('addController', ['$scope', '$http', function($scope, $http) {
     //ajax call
     $http({
       method: 'POST',
-      url: '/addItems',
+      url: '/addItem',
       data: dataToSend
     }).then(function(response){
       console.log('post response =', response);
@@ -76,7 +76,7 @@ myApp.controller('addController', ['$scope', '$http', function($scope, $http) {
     });
   };
 
-  $scope.getItems = function(){
+  var getItems = $scope.getItems = function(){
     $http({
       method: '/GET',
       url: '/getItem'
