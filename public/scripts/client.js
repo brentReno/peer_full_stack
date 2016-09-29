@@ -80,9 +80,7 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
       }); // end response
 
       $scope.getItems();
-    };// end remove pet
-  $scope.init();
-  $scope.getItems();
+    };// end remove items
 
 
   $scope.addItems = function(){
@@ -104,23 +102,8 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
     });
     $scope.getItems();
   };
-
-  var getItems = $scope.getItems = function(){
-    $http({
-      method: 'GET',
-      url: '/getItem'
-    }).then(function(response){
-      console.log('response is', response);
-      $scope.shelfobjects=response.data;
-
-      console.log('got objects from the shelf', response);
-    }, function errorCallBack(response){
-      console.log('error in GET');
-    });
-
-  };
-  getItems();
-
+  $scope.init();
+  $scope.getItems();
 }]);
 var emptyLocalStorage = function(){
   localStorage.removeItem('userProfile');
