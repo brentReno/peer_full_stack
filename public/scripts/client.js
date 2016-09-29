@@ -76,6 +76,17 @@ myApp.controller('addController', ['$scope', '$http', function($scope, $http) {
     });
   };
 
+  $scope.getItems = function(){
+    $http({
+      method: '/GET',
+      url: '/getItem'
+    }).then(function(response){
+      $scope.shelfobjects=response.data;
+      console.log('got objects from the shelf', response);
+    }, function errorCallBack(response){
+      console.log('error in GET');
+    });
+  };
 
 
 

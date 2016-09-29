@@ -49,7 +49,7 @@ app.post('/addItem', function(req, res){
 	}); //end newItem save
 });//end app post
 
-app.get('/', function(req, res){
+app.get('/getItem', function(req, res){
 	console.log('in item get');
 	Shelf.find({}, function(err, foundItems){
 		if(err){
