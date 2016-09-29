@@ -66,14 +66,24 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
 
   };
 
+  $scope.deleteItem = function(){
+      var objectToSend = { id: this.item._id };
+      console.log(objectToSend);
+  // start of delete call
+      $http({
+        method:'DELETE',
+        url: '/deleteItem',
+        data: objectToSend,
+        headers: {'Content-Type': 'application/json;charset=utf-8'}
+      }).then(function(response){
+        console.log('got this back on delete:', response);
+      }); // end response
 
+      $scope.getItems();
+    };// end remove pet
   $scope.init();
   $scope.getItems();
 
-}]); // end auth controller
-
-myApp.controller('addController', ['$scope', '$http', function($scope, $http) {
-  console.log('in addController');
 
   $scope.addItems = function(){
     var dataToSend = {
@@ -92,6 +102,7 @@ myApp.controller('addController', ['$scope', '$http', function($scope, $http) {
     }, function errorCallBack(response){
       console.log('error in POST');
     });
+    $scope.getItems();
   };
 
   var getItems = $scope.getItems = function(){
@@ -108,10 +119,7 @@ myApp.controller('addController', ['$scope', '$http', function($scope, $http) {
     });
 
   };
-
   getItems();
-
-
 
 }]);
 var emptyLocalStorage = function(){

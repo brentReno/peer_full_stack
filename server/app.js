@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded( { extended: true } );
 app.use(bodyParser.json());
 var mongoose = require('mongoose');
 
@@ -61,3 +62,15 @@ app.get('/getItem', function(req, res){
 		}
 	}); //end Item find
 });//end get
+
+app.delete('/deleteItem', urlencodedParser, function(req, res){
+  console.log('hit remove item:', req.body);
+  Shelf.findByIdAndRemove(req.body.id, function(err, results){
+    if(err){
+      console.log('error:', err);
+    }else{
+      console.log('successfully deleted item');
+      res.send(200);
+    }
+  });
+});
