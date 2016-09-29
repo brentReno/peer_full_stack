@@ -57,6 +57,24 @@ myApp.controller('authController', ['$scope', '$http', function($scope, $http){
 
 myApp.controller('addController', ['$scope', '$http', function($scope, $http) {
   console.log('in addController');
+  $scope.addItems = function(){
+    var dataToSend = {
+      description: $scope.description,
+      placer: $scope.placer,
+      image: $scope.image
+    };
+    console.log ('data to send is', dataToSend);
+    //ajax call
+    $http({
+      method: 'POST',
+      url: '/addItems',
+      data: dataToSend
+    }).then(function(response){
+      console.log('post response =', response);
+    }, function errorCallBack(response){
+      console.log('error in POST')
+    });
+  };
 
 
 
